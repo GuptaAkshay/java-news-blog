@@ -1,57 +1,56 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.guptaAkshay.jnb</groupId>
-  <artifactId>java-news-blog</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <properties>
-  	<org.springframework.version>4.3.2.RELEASE</org.springframework.version>
-  	<apache.tiles>3.0.7</apache.tiles>
-  </properties>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.guptaAkshay.jnb</groupId>
+	<artifactId>java-news-blog</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <dependency>
-  	<groupId>org.apache.tiles</groupId>
-  	<artifactId>tiles-core</artifactId>
-  	<version>${apache.tiles}</version>
-  </dependency>
-  
-  <dependency>
-  	<groupId>org.apache.tiles</groupId>
-  	<artifactId>tiles-jsp</artifactId>
-  	<version>${apache.tiles}</version>
-  </dependency>
+	<properties>
+		<org.springframework.version>4.3.2.RELEASE</org.springframework.version>
+		<apache.tiles>3.0.7</apache.tiles>
+	</properties>
+	<dependencies>
 
-	<!-- <dependency>
-		<groupId>org.apache.tiles</groupId>
-		<artifactId>tiles-api</artifactId>
-		<version>${apache.tiles}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.tiles</groupId>
-		<artifactId>tiles-servlet</artifactId>
-		<version>${apache.tiles}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.tiles</groupId>
-		<artifactId>tiles-template</artifactId>
-		<version>${apache.tiles}</version>
-	</dependency> -->
-	
-  <dependency>
-  	<groupId>org.slf4j</groupId>
-  	<artifactId>slf4j-log4j12</artifactId>
-  	<version>1.7.21</version>
-  </dependency>
-  
-  <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>servlet-api</artifactId>
-    <version>2.5</version>
-</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${apache.tiles}</version>
+		</dependency>
 
-  <!-- Core utilities used by other modules. Define this if you use Spring 
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${apache.tiles}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Core utilities used by other modules. Define this if you use Spring 
 			Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -173,24 +172,45 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- This module deals with enhanced support for JPA based data access 
+			layers. It makes it easier to build Spring-powered applications that use 
+			data access technologies. -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.10.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.4</version>
+		</dependency>
+
 	</dependencies>
-  <build>
-  	<plugins>
-  		<plugin>
-  			<groupId>org.eclipse.jetty</groupId>
-  			<artifactId>jetty-maven-plugin</artifactId>
-  			<version>9.4.0.M1</version>
-  		</plugin>
-  		<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-compiler-plugin</artifactId>
-		    <version>3.5.1</version>
-		    <configuration>
-		    	<source>1.8</source>
-		    	<target>1.8</target>
-		    </configuration>
-  		</plugin>
-  	</plugins>
-  </build>
-  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.0.M1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
