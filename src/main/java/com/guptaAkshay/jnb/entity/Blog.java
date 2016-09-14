@@ -2,7 +2,9 @@ package com.guptaAkshay.jnb.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,7 +24,7 @@ public class Blog {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="blog")
+	@OneToMany(mappedBy="blog", cascade=CascadeType.ALL)
 	private List<Item> items;
 	
 	
