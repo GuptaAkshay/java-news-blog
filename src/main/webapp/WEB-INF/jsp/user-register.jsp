@@ -3,10 +3,21 @@
 <%@ include file="../layouts/taglib.jsp" %>
 
 <form:form commandName="user" cssClass="form-horizontal">
+
+	<c:if test="${param.success eq true}">
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			Registration Successful! Click here to <a href='<spring:url value="/login.html"></spring:url>' class="alert-link">Login</a>
+		</div>
+	</c:if>
+	
 	<div class="form-group">
     <label for="name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
-      <form:input path="name" cssClass="form-control"/>
+      <form:input path="name" cssClass="form-control" autofocus="autofocus"/>
     </div>
   </div>
   <div class="form-group">
