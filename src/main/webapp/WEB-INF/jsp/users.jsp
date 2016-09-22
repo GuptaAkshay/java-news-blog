@@ -2,10 +2,24 @@
     pageEncoding="UTF-8"%>
 
  <%@ include file="../layouts/taglib.jsp" %>
+ 
+ <script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$(".triggerRemove").click(function(e){
+		e.preventDefault();
+		$("#modalRemove .removeBtn").attr("href",$(this).attr("href"));
+		$("#modalRemove").modal();
+	})
+})
+</script>
+ 
  <table class="table table-bordered table-hover table-striped">
  	<thead>
  		<tr>
  			<th>User Name</th>
+ 			<th>Actions</th>
  		</tr>
  	</thead>
  	<tbody>
@@ -13,10 +27,32 @@
  			<tr>
  				<td>
  					<a href='<spring:url value="/users/${user.id}.html" />'>
- 					${user.name}
+ 					<c:out value='${user.name}' />
  					</a>
+ 				</td>
+ 				<td>
+ 					<a href='<spring:url value="/users/remove/${user.id}.html"></spring:url>' class="btn btn-danger triggerRemove">Remove User</a>
  				</td>
  			</tr>
  		</c:forEach>
  	</tbody>
- </table>    
+ </table>   
+ 
+ <!-- Modal -->
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Blog</h4>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>

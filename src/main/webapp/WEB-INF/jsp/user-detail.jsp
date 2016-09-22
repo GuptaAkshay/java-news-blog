@@ -4,7 +4,7 @@
 <%@ include file="../layouts/taglib.jsp"%>
 
 
-<h1>${user.name}</h1>
+<h1><c:out value='${user.name}' /></h1>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
 	data-target="#myModal">Add New Blog</button>
@@ -51,6 +51,11 @@
 $(document).ready(function(){
 	
 	$('.nav-tabs a:first').tab('show'); // Select first tab
+	$(".triggerRemove").click(function(e){
+		e.preventDefault();
+		$("#modalRemove .removeBtn").attr("href",$(this).attr("href"));
+		$("#modalRemove").modal();
+	})
 })
 </script>
 
@@ -68,7 +73,10 @@ $(document).ready(function(){
     <div role="tabpanel" class="tab-pane" id="blog_${blog.id}">
     	
     	<h1>${blog.name}</h1>
-	<p>${blog.url}</p>
+    	
+	<p>
+		<a href='<spring:url value="/blog/remove/${blog.id}.html"></spring:url>' class="btn btn-danger triggerRemove">Remove Blog</a>
+	${blog.url}</p>
 
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -92,5 +100,23 @@ $(document).ready(function(){
 
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Blog</h4>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div> 
 
 	

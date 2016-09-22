@@ -1,4 +1,4 @@
-package com.guptaAkshay.jnb.repository;
+ package com.guptaAkshay.jnb.repository;
 
 import java.util.List;
 

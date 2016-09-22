@@ -1,7 +1,6 @@
 package com.guptaAkshay.jnb.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,4 +76,18 @@ public class UserController {
 		return "redirect:/account.html";
 	}
 	
+	@RequestMapping("/blog/remove/{id}")	
+	public String removeBlog(@PathVariable int id /*, Principal principal*/){
+		Blog blog = blogService.findOne(id);
+		blogService.delete(blog);
+		return "redirect:/account.html";
+				
+	}
+	
+	@RequestMapping("users/remove/{id}")
+	public String removeUser(@PathVariable int id){
+		userService.delete(id);
+		return "redirect:/users.html";
+	}
+			
 }
