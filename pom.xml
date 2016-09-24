@@ -181,7 +181,7 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.10.2.RELEASE</version>
 		</dependency>
-
+		<!-- This module is for spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -192,15 +192,26 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
+		<!-- This module is for spring taglibs used in jsp -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
+		<!-- This module is of hibernate framework -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.11.Final</version>
+		</dependency>
+
+		<!-- This module is of hibernate validator for server side validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
 		</dependency>
 
 		<dependency>

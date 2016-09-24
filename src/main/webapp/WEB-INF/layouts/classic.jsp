@@ -58,7 +58,7 @@ body {
 						href='<spring:url value="/users.html"></spring:url>'>Users</a></li>						
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">					
-						<li class="${current == 'users' ? 'active' : ''}" ><a href="<spring:url value="/account.html"></spring:url>">My Account</a></li>
+						<li class="${current == 'account' ? 'active' : ''}" ><a href="<spring:url value="/account.html"></spring:url>">My Account</a></li>
 					</security:authorize>					
 					<li class="${current == 'contact' ? 'active' : ''}"><a
 						href="#">Contact</a></li>
