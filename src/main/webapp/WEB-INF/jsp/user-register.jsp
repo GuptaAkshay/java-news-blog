@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layouts/taglib.jsp" %>
 
-<form:form commandName="user" cssClass="form-horizontal">
+<form:form commandName="user" cssClass="form-horizontal registrationForm">
 
 	<c:if test="${param.success eq true}">
 		<div class="alert alert-success alert-dismissible" role="alert">
@@ -35,6 +35,12 @@
       <form:errors path="password" />
     </div>
   </div>
+  <div class="form-group">
+    <label for="cnfpassword" class="col-sm-2 control-label">Confirm Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="cnfpassword" id="cnfpassword" class="form-control" />
+    </div>
+  </div>
   <div class="form-group">    
     <div class="col-sm-2">
       <input type="submit" value="Submit" class="btn btn-primary"/>
@@ -42,3 +48,53 @@
   </div>
   
 </form:form>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$(".registrationForm").validate(
+		
+			{
+				rules:{
+					name:{
+						required :true,
+						minlength : 3,
+						remote : {
+							url : "<spring:url value='/register/available.html' />",
+							type : "get",
+							data : {
+								userName : function(){
+									return $("#name").val();
+								} 
+							}
+						}
+					},
+					email:{
+						required :true,
+						email : true
+					},
+					password:{
+						required :true,
+						minlength : 6
+					},
+					cnfpassword:{
+						required :true,
+						minlength : 6,
+						equalTo: "#password"
+					},
+				},
+				highlight : function (element) {
+					$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+				},
+				unhighlight : function (element) {
+					$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+				},
+				messages: {
+					name:{
+						remote : "UserName already exists! Please try some other name"
+					}
+				}
+			}
+	)
+})
+</script>

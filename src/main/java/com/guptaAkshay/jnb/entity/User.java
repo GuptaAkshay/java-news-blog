@@ -3,6 +3,7 @@ package com.guptaAkshay.jnb.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.guptaAkshay.jnb.annotation.UniqueUserName;
+
 @Entity
 public class User {
 
@@ -20,14 +23,16 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
-	@Size(min=3, message = "Name must be atleat 3 character")
+	@Size(min=3, message = "Name must be atlesat 3 character")
+	@Column(unique=true)
+	@UniqueUserName(message="UserName already exists!")
 	private String  name;
 	
 	@Size(min=1, message = "Invalid Email Address!")
 	@Email
 	private String email;
 	
-	@Size(min=6, message = "Password must be atleat 6 character")
+	@Size(min=6, message = "Password must be atlesat 6 character")
 	private String password;
 	private boolean enabled;
 	
